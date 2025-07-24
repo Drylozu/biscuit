@@ -431,8 +431,7 @@ export class BaseClient {
 				});
 
 				const uniqueError = errors.find(er => errors.filter(err => err.message === er.message).length === 1);
-				if (uniqueError) throw uniqueError;
-				throw new Error('No seyfert.config file found');
+				throw uniqueError ?? new Error('No seyfert.config file found');
 			}))) as T;
 
 		const { locations, debug, ...env } = seyfertConfig;
